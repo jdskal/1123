@@ -48,6 +48,7 @@ def api_request(method, endpoint, data=None, token=None, expected_status=None):
         endpoint = '/' + endpoint
     
     url = f"{BASE_URL}{endpoint}"
+    print(f"Making {method.upper()} request to: {url}")
     headers = {}
     
     if token:
