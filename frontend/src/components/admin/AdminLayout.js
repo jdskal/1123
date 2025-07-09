@@ -12,7 +12,7 @@ import {
   ChartBarIcon,
   Bars3Icon,
   XMarkIcon,
-  LogoutIcon
+  ArrowRightOnRectangleIcon
 } from '@heroicons/react/24/outline';
 
 const AdminLayout = ({ children, currentPage }) => {
