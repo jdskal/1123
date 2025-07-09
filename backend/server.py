@@ -644,17 +644,17 @@ async def init_admin():
     if user_count > 0:
         raise HTTPException(status_code=400, detail="Admin user already exists")
     
-    admin_data = {
-        "email": "admin@school.com",
-        "full_name": "School Administrator",
-        "role": UserRole.ADMIN,
-        "hashed_password": get_password_hash("admin123"),
-        "is_active": True
-    }
+    # Create User object with required fields
+    admin_user = User(
+        email="admin@school.com",
+        full_name="School Administrator",
+        role=UserRole.ADMIN,
+        is_active=True
+    )
     
-    # Create User object without hashed_password for validation
-    user_data_for_model = {k: v for k, v in admin_data.items() if k != "hashed_password"}
-    admin_user = User(**user_data_for_model)
+    # Prepare data for database insertion
+    admin_data = admin_user.dict()
+    admin_data["hashed_password"] = get_password_hash("admin123")
     
     # Insert into database with hashed_password
     await db.users.insert_one(admin_data)
