@@ -129,7 +129,7 @@ const SidebarContent = ({ navigation, user, logout }) => {
           onClick={logout}
           className="mt-3 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          <LogoutIcon className="h-4 w-4 mr-2" />
+          <ArrowRightOnRectangleIcon className="h-4 w-4 mr-2" />
           Выйти
         </button>
       </div>
