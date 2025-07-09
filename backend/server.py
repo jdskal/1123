@@ -657,6 +657,8 @@ async def init_admin():
     
     return {"message": "Admin user created successfully", "email": "admin@school.com", "password": "admin123"}
 
+# Include the router in the main app (after all endpoints are defined)
+app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
