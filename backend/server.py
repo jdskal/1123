@@ -290,6 +290,10 @@ async def get_moderator_user(current_user: User = Depends(get_current_user)):
 async def root():
     return {"message": "School Admin Panel API"}
 
+@api_router.get("/test")
+async def test_endpoint():
+    return {"message": "Test endpoint is working"}
+
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
     status_dict = input.dict()
