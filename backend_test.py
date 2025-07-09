@@ -43,6 +43,10 @@ def record_test(name, passed, details=None):
 
 # Helper function to make API requests with error handling
 def api_request(method, endpoint, data=None, token=None, expected_status=None):
+    # Ensure endpoint starts with a slash
+    if not endpoint.startswith('/'):
+        endpoint = '/' + endpoint
+    
     url = f"{BASE_URL}{endpoint}"
     headers = {}
     
