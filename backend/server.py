@@ -306,9 +306,6 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
-# Include the router in the main app
-app.include_router(api_router)
-
 # Authentication endpoints
 @api_router.post("/auth/register", response_model=User)
 async def register(user_data: UserCreate, current_user: User = Depends(get_admin_user)):
