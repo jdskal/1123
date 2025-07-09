@@ -652,8 +652,12 @@ async def init_admin():
         "is_active": True
     }
     
-    admin_user = User(**admin_data)
-    await db.users.insert_one(admin_user.dict())
+    # Create User object without hashed_password for validation
+    user_data_for_model = {k: v for k, v in admin_data.items() if k != "hashed_password"}
+    admin_user = User(**user_data_for_model)
+    
+    # Insert into database with hashed_password
+    await db.users.insert_one(admin_data)
     
     return {"message": "Admin user created successfully", "email": "admin@school.com", "password": "admin123"}
 
